@@ -24,45 +24,48 @@ public class SecondSceneScript : MonoBehaviour
         switch (answerManager.testMode)
         {
             case 0:
-                answerText = "¡Bien! ¿Cuanto es 5 + 10 - 7?";
+                answerText = "¡Bien! ¿Cuánto es 5 + 10 - 7?";
                 answerA = "9";
                 answerB = "8";
                 answerC = "28";
                 break;
             case 1:
-                answerText = "¡Bien! ¿Cuanto es 7 * 8 dividido 4?";
+                answerText = "¡Bien! ¿Cuánto es 7 * 8 dividido 4?";
                 answerA = "16";
                 answerB = "14";
                 answerC = "450";
                 break;
             case 2:
-                answerText = "¡Bien! ¿Cuanto es la raiz cuadrada de 5^4?";
+                answerText = "¡Bien! ¿Cuánto es la raíz cuadrada de 5^4?";
                 answerA = "5";
                 answerB = "25";
                 answerC = "390625";
                 break;
         }
 
-        DialogData Text1 = new DialogData(answerText, "Li");
+        DialogData text1 = new DialogData(answerText, "Li");
 
-        Text1.SelectList.Add("OpcionA", answerA);
-        Text1.SelectList.Add("OpcionB", answerB);
-        Text1.SelectList.Add("OpcionC", answerC);
+        text1.SelectList.Add("OpcionA", answerA);
+        text1.SelectList.Add("OpcionB", answerB);
+        text1.SelectList.Add("OpcionC", answerC);
         
-        Text1.Callback = () => answerQuestion();
+        text1.Callback = () => answerQuestion();
 
-        dialogTexts.Add(Text1);
+        dialogTexts.Add(text1);
 
-        DialogData Text2 = new DialogData("No se me ocurre que texto poner aca", "Sa");
+        DialogData text2 = new DialogData("No se me ocurre que texto poner acá.", "Sa");
         
-        Text2.Callback = () => SceneManager.LoadScene(2);
+        text2.Callback = () => SceneManager.LoadScene(2);
 
 
-        dialogTexts.Add(Text2);
+        dialogTexts.Add(text2);
 
         DialogManager.Show(dialogTexts);
     }
 
+    /// <summary>
+    /// Basado en la respuesta del usuario, se agregará a la línea de diálogo un mensaje u otro. 
+    /// </summary>
     private void answerQuestion()
     {
         var answerText = "/emote:Sad/¿Como siquiera llegaste a ese resultado?";
@@ -72,7 +75,6 @@ public class SecondSceneScript : MonoBehaviour
         {
             answerText = "/emote:Normal/¡Incorrecto! Pero bueno, aunque sea lo intentaste. . .";
             answerManager.answer = 0;
-
         }
         else if (DialogManager.Result == "OpcionB")
         {
@@ -83,7 +85,6 @@ public class SecondSceneScript : MonoBehaviour
         var dialogTexts = new List<DialogData>();
 
         var text2 = new DialogData(answerText, "Li");
-
 
         dialogTexts.Add(text2);
 

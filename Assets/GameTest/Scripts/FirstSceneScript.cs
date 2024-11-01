@@ -16,25 +16,27 @@ public class FirstSceneScript : MonoBehaviour
 
         dialogTexts.Add(new DialogData("Hola, bienvenido a esta /size:up/prueba./size:init/", "Li"));
 
-        dialogTexts.Add(new DialogData("/emote:Happy/¡Vamos a ver tus habilidades /color:red/matematicas/color:white/!/emote:Normal/", "Li"));
+        dialogTexts.Add(new DialogData("/emote:Happy/¡Vamos a ver tus habilidades /color:red/matemáticas/color:white/!/emote:Normal/", "Li"));
 
-        var Text1 = new DialogData("¿Sobre que quieres que te pregunte?");
-        Text1.SelectList.Add("Facil", "Adición y sustracción.");
-        Text1.SelectList.Add("Medio", "Multiplicación y división.");
-        Text1.SelectList.Add("Dificil", "Potenciación y radicación.");
+        var text1 = new DialogData("¿Sobre qué quieres que te pregunte?");
+        text1.SelectList.Add("Facil", "Adición y sustracción.");
+        text1.SelectList.Add("Medio", "Multiplicación y división.");
+        text1.SelectList.Add("Dificil", "Potenciación y radicación.");
 
-        Text1.Callback = () => answerQuestion();
+        text1.Callback = () => answerQuestion();
         
-        dialogTexts.Add(Text1);
+        dialogTexts.Add(text1);
 
-        var Text2 = new DialogData("/emote:Happy/¡Vamos con las preguntas!/emote:Normal/", "Li");
-        Text2.Callback = () => SceneManager.LoadScene(1);
-        dialogTexts.Add(Text2);
+        var text2 = new DialogData("/emote:Happy/¡Vamos con las preguntas!/emote:Normal/", "Li");
+        text2.Callback = () => SceneManager.LoadScene(1);
+        dialogTexts.Add(text2);
 
         DialogManager.Show(dialogTexts);
-       
     }
 
+    /// <summary>
+    /// Basado en la respuesta del usuario, se agregará a la línea de diálogo un mensaje u otro. 
+    /// </summary>
     private void answerQuestion()
     {
         var answerText = "/emote:Sad/No te criticaré si fallas. . .";
